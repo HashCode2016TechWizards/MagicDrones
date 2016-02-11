@@ -19,3 +19,19 @@ Types, Amounts, Customer
 Input reader
 
 Solver
+   Iterate over Orders
+        For each warehouse calculate distance, add warehouse-distance pairs to list
+        Sort warehouse-distance list by distance
+        1:
+            find amount of drones needed
+            find closest warehouse with all items
+            Deliver with drones closes to warehouse
+        2:
+            find the smallest
+
+
+   	Iterage over items
+            Iterate warehouses
+                if has item
+                    deliver with closest drone
+            
