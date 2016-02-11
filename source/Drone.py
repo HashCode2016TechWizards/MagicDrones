@@ -47,9 +47,3 @@ class Drone:
         for item in self.items:
              m = m + item.weight
         return m
-
-if __name__ == "__main__":
-    pos1 = [0,0]
-    pos2 = [1,0]
-    drone1 = Drone([0,0])
-    print drone1.calcWaitTime(pos1,pos2)
