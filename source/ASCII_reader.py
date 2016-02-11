@@ -1,3 +1,5 @@
+import Order
+
 class ASCII_reader():
 
     def __init__(self, inputfile):
@@ -21,12 +23,15 @@ class ASCII_reader():
 
         # Orders
         orderamount = int(self.inputfile.readline())
+        orders = []
         for i in range(orderamount):
             # Customer coordinates
-            self.inputfile.readline()
+            coords = [int(i) for i in self.inputfile.readline().split(' ')]
             # Order item amount
             self.inputfile.readline()
             # Item product ids
-            self.inputfile.readline()        
+            items = [int(i) for i in self.inputfile.readline().split(' ')]
+            thisorder = Order(coords, items)
+            orders.append(thisorder)
 
-        return products
+        return (products, {}, orders)
