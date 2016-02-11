@@ -1,0 +1,21 @@
+Drone:
+Load, Deliver, Unload, Wait, ReadyIn
+Items
+Position
+
+World:
+Warehouses, Customers
+-> Web
+Drones
+Types+masses
+
+Warehouse:
+Position
+Type, Amount
+
+Order:
+Types, Amounts, Customer
+
+Input reader
+
+Solver
