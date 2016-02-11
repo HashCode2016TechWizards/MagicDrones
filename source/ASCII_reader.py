@@ -1,4 +1,5 @@
-import Order
+from Order import Order
+from Warehouse import Warehouse
 
 class ASCII_reader():
 
@@ -21,8 +22,8 @@ class ASCII_reader():
             coords = [int(i) for i in self.inputfile.readline().split(' ')]
             # Warehouse contains (dictionary)
             contents = dict(enumerate([int(i) for i in self.inputfile.readline().split(' ')]))
-            thiswarehouse = Warehouse(coords, contents)
-            warehouses.append()
+            thiswarehouse = Warehouse(contents, coords)
+            warehouses.append(thiswarehouse)
 
         # Orders
         orderamount = int(self.inputfile.readline())
@@ -33,7 +34,12 @@ class ASCII_reader():
             # Order item amount
             self.inputfile.readline()
             # Item product ids
-            items = [int(i) for i in self.inputfile.readline().split(' ')]
+            items = {}
+            for i in self.inputfile.readline().split(' '):
+                if not int(i) in items:
+                    items[int(i)] = 1
+                else:
+                    items[int(i)] += 1
             thisorder = Order(coords, items)
             orders.append(thisorder)
 
