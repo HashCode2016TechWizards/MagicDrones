@@ -1,4 +1,5 @@
 import math
+import Warehouse
 
 class Drone:
 
@@ -12,6 +13,12 @@ class Drone:
     def calcWaitTime(self, pos1, pos2):
         return math.sqrt((pos1[0]-pos2[0])**2 + (pos1[1]-pos2[1])**2)
 
+    def update(self, time):
+        if self._busy > 0:
+            self._busy = self._busy-time
+            if self._busy < 0:
+                self._busy = 0
+
     def readyIn():
         return self._busy
 
@@ -24,9 +31,10 @@ class Drone:
         self._busy = calcWaitTime(self, self.position, position)
         self.position = position
 
-    def load(self, item, warehouse):
+    def load(self, item, amount, warehouse):
         self.move(warehouse.position)
         self._items.add(item)
+        warehouse.take(item, amount)
         self._busy = self._busy+1
 
     def deliver(self, item, position):
