@@ -15,11 +15,14 @@ class ASCII_reader():
 
         # Warehouses
         wareamount = int(self.inputfile.readline())
+        warehouses = []
         for i in range(wareamount):
-            # Warehouse coordinate
-            self.inputfile.readline()
+            # Warehouse coordinates
+            coords = [int(i) for i in self.inputfile.readline().split(' ')]
             # Warehouse contains (dictionary)
-            self.inputfile.readline()
+            contents = dict(enumerate([int(i) for i in self.inputfile.readline().split(' ')]))
+            thiswarehouse = Warehouse(coords, contents)
+            warehouses.append()
 
         # Orders
         orderamount = int(self.inputfile.readline())
@@ -34,4 +37,4 @@ class ASCII_reader():
             thisorder = Order(coords, items)
             orders.append(thisorder)
 
-        return (products, {}, orders)
+        return (products, warehouses, orders)

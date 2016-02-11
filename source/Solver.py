@@ -1,7 +1,12 @@
 from Warehouse import Warehouse
 import math
 
+import math
+
 class Solver:
+
+    maxload = 1
+    products = {}
 
     def sortByDistance(self, position, items):
         sortedItems = []
@@ -11,3 +16,7 @@ class Solver:
         sortedItems.sort()
         return sortedItems
 
+    def dronesNeeded(order):
+        # Get the sum of item weights for this order
+        sumweight = sum([products[i] for i in order.items])
+        return math.ceil(sumweight/maxload)
