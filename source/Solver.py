@@ -20,3 +20,15 @@ class Solver:
         # Get the sum of item weights for this order
         sumweight = sum([products[i] for i in order.items])
         return math.ceil(sumweight/maxload)
+
+    def findClosestWarehouseWithAll(self, items, warehouses):
+        for wh in warehouses
+            if self.containsAll(items):
+                return wh
+        return False
+
+    def containsAll(self, items, warehouse):
+        for item in items
+            if warehouse.howMany(item[0]) < item[1]: 
+                return False
+        return True
