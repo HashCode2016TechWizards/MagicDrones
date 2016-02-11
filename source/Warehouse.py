@@ -1,9 +1,11 @@
 
 class Warehouse:
     contents = {}
+    position = [0,0]
 
-    def __init__(self, contents):
+    def __init__(self, contents, position):
         self.contents = contents
+        self.position = position
 
     def take(self, itemType, amount):
         if self.contents[itemType] < amount:
