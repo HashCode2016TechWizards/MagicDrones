@@ -39,9 +39,13 @@ class Solver:
             wh = findClosestWarehouseWithAll(order.items, warehouses)
             if wh==False:
                break
-            droneCount = dronesNeeded(order)
-            if droneCount > availableDrones.length:
+            loadInstructions = dronesNeeded(order)
+            if loadInstructions.length > availableDrones.length:
                 break
             availableDrones = self.sortByDistance(self.position, availableDrones)
-            for item in order.items:
-                pass
+            for instruction in loadInstructions:
+                for itemID in instruction.keys():
+                    availableDrones[0].load(itemID, order.items[itemID])
+                availableDrones[0].deliverAll(order.coordinates)
+                availableDrones.pop(0)
+            

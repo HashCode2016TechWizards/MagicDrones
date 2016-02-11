@@ -24,11 +24,11 @@ class Drone:
 
     def checkIfBusy(self):
         if (self._busy > 0):
-            raise Exception
+            pass
 
     def move(self,position):
         self.checkIfBusy()
-        self._busy = calcWaitTime(self, self.position, position)
+        self._busy = self._busy + calcWaitTime(self, self.position, position)
         self.position = position
 
     def load(self, item, amount, warehouse):
@@ -36,6 +36,10 @@ class Drone:
         self._items.add(item)
         warehouse.take(item, amount)
         self._busy = self._busy+1
+
+    def deliverAll(self, position):
+        for item in self._items.keys():
+            self.deliver(item, position)
 
     def deliver(self, item, position):
         self.move(position)
