@@ -32,3 +32,16 @@ class Solver:
             if warehouse.howMany(item[0]) < item[1]: 
                 return False
         return True
+
+    def solve(drones, orders, warehouses):
+        availableDrones = drones
+        for order in orders:
+            wh = findClosestWarehouseWithAll(order.items, warehouses)
+            if wh==False:
+               break
+            droneCount = dronesNeeded(order)
+            if droneCount > availableDrones.length:
+                break
+            availableDrones = self.sortByDistance(self.position, availableDrones)
+            for item in order.items:
+                pass
